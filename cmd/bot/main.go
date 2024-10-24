@@ -25,7 +25,7 @@ func main() {
 		log.Fatal(errors.Wrap(err, "can't load config"))
 	}
 
-	bot, err := bot.NewBot(config.TelegramToken)
+	bot, err := bot.NewBot(config.Telegram.Token)
 	if err != nil {
 		log.Fatal(errors.Wrap(err, "can't create bot"))
 	}

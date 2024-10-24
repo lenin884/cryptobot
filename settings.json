@@ -2,5 +2,9 @@
     "go.useLanguageServer": true,
     "gopls": {
         "build.experimentalWorkspaceModule": true
+    },
+    "editor.formatOnSave": true,
+    "[go]": {
+        "editor.formatOnSave": true
     }
 }

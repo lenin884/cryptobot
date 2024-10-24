@@ -1,14 +1,26 @@
 package config
 
 import (
-	"gopkg.in/yaml.v3"
 	"io"
 	"os"
+
+	"gopkg.in/yaml.v3"
 )
 
 // Config содержит конфигурацию бота.
 type Config struct {
-	TelegramToken string `yaml:"telegram_token"`
+	Telegram Telegram `yaml:"telegram"`
+	Bybit    Bybit    `yaml:"bybit"`
+}
+
+type Telegram struct {
+	Token string `yaml:"token"`
+}
+
+type Bybit struct {
+	Key     string `yaml:"api_key"`
+	Secret  string `yaml:"api_secret"`
+	Testnet bool   `yaml:"testnet"`
 }
 
 // NewConfig загружает конфигурацию из файла.
