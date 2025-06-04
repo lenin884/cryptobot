@@ -11,6 +11,7 @@ import (
 type Config struct {
 	Telegram Telegram `yaml:"telegram"`
 	Bybit    Bybit    `yaml:"bybit"`
+	DBPath   string   `yaml:"db_path"`
 }
 
 type Telegram struct {

@@ -1,9 +1,9 @@
 package market
 
 import (
-	"testing"
 	"context"
 	"fmt"
+	"testing"
 
 	bybit "github.com/wuhewuhe/bybit.go.api"
 )
