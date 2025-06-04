@@ -9,6 +9,8 @@ import (
 
 	"github.com/lenin884/cryptobot/internal/bot"
 	"github.com/lenin884/cryptobot/internal/config"
+	"github.com/lenin884/cryptobot/internal/market"
+	"github.com/lenin884/cryptobot/internal/storage"
 	"github.com/pkg/errors"
 )
 
@@ -25,7 +27,14 @@ func main() {
 		log.Fatal(errors.Wrap(err, "can't load config"))
 	}
 
-	bot, err := bot.NewBot(config.Telegram.Token)
+	store, err := storage.New(config.DBPath)
+	if err != nil {
+		log.Fatal(errors.Wrap(err, "can't open db"))
+	}
+
+	bybitClient := market.NewBybit(config.Bybit.Key, config.Bybit.Secret)
+
+	bot, err := bot.NewBot(config.Telegram.Token, bybitClient, store)
 	if err != nil {
 		log.Fatal(errors.Wrap(err, "can't create bot"))
 	}
